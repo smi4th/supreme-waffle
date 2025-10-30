@@ -1,13 +1,16 @@
 from main import main
 from typing import List
+import pytest
 
 def test_too_few_dices() -> None:
     dices: List[int] = [1, 2, 3]
-    assert main(dices) == 'error'
+    with pytest.raises(ValueError, match="Number of dices must be 5"):
+        assert main(dices) == 'error'
     
 def test_too_many_dices() -> None:
     dices: List[int] = [1, 2, 3, 4, 5, 6, 7, 8]
-    assert main(dices) == 'error'
+    with pytest.raises(ValueError, match="Number of dices must be 5"):
+        assert main(dices) == 'error'
 
 def test_brelan_stacked() -> None:
     dices: List[int] = [1, 1, 1, 2, 3]

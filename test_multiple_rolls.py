@@ -15,7 +15,7 @@ def test_one_carre() -> None:
     assert main(rolls) == 35
     
 def test_one_full() -> None:
-    rolls: List[List[int]] = [[1, 2, 1, 1, 1]]
+    rolls: List[List[int]] = [[1, 1, 1, 2, 2]]
     assert main(rolls) == 30
     
 def test_on_suite() -> None:
@@ -27,5 +27,5 @@ def test_one_YAMS() -> None:
     assert main(rolls) == 50
 
 def test_one_chance() -> None:
-    rolls: List[List[int]] = [[1, 1, 2, 3, 4]]
+    rolls: List[List[int]] = [[2, 2, 3, 4, 5]]
     assert main(rolls) == 16

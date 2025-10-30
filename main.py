@@ -49,4 +49,9 @@ def calculateOneRoll(dices: List[int]) -> int:
 
 def main(rolls: List[List[int]]) -> int:
     
-    return 0
+    resultat: int = 0
+    
+    for roll in rolls:
+        resultat += calculateOneRoll(roll)
+        
+    return resultat

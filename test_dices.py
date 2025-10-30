@@ -45,5 +45,5 @@ def test_yams() -> None:
     assert main(dices) == 50
     
 def test_chance() -> None:
-    dices: List[int] = [1, 2, 3, 4, 5]
-    assert main(dices) == 15
+    dices: List[int] = [2, 2, 3, 4, 5]
+    assert main(dices) == 16

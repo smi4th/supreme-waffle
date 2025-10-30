@@ -23,9 +23,16 @@ def isSuite(dices: List[int]) -> bool:
     max_dice: int = max(dices)
     return len(set(dices)) == max_dice - min_dice + 1 == len(dices)
 
+def isYAMS(dices: List[int]) -> bool:
+    counter = Counter(dices)
+    return max(counter.values()) == 5
+
 def main(dices: List[int]) -> int:
     
     checkNumberOfDices(dices)
+    
+    if isYAMS(dices):
+        return 50
     
     if isSuite(dices):
         return 40

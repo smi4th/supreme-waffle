@@ -1,57 +1,36 @@
-from typing import List
-from collections import Counter
+from typing import List, Dict, Callable
+from figures import isYAMS, isSuite, isCarre, isFull, isBrelan
+
+
+ORDERED_POSSIBLE_FIGURES: Dict[Callable[[List[int]], bool], int] = {
+    isYAMS: 50,
+    isSuite: 40,
+    isCarre: 35,
+    isFull: 30,
+    isBrelan: 28,
+}
+
 
 def checkNumberOfDices(dices: List[int]) -> None:
     if len(dices) != 5:
-        raise ValueError('Number of dices must be 5')
+        raise ValueError("Number of dices must be 5")
 
-def isBrelan(dices: List[int]) -> bool:
-    counter = Counter(dices)
-    return max(counter.values()) == 3
-
-def isCarre(dices: List[int]) -> bool:
-    counter = Counter(dices)
-    return max(counter.values()) == 4
-
-def isFull(dices: List[int]) -> bool:
-    counter = Counter(dices)
-    counts = sorted(counter.values())
-    return counts == [2, 3]
-
-def isSuite(dices: List[int]) -> bool:
-    min_dice: int = min(dices)
-    max_dice: int = max(dices)
-    return len(set(dices)) == max_dice - min_dice + 1 == len(dices)
-
-def isYAMS(dices: List[int]) -> bool:
-    counter = Counter(dices)
-    return max(counter.values()) == 5
 
 def calculateOneRoll(dices: List[int]) -> int:
     checkNumberOfDices(dices)
-    
-    if isYAMS(dices):
-        return 50
-    
-    if isSuite(dices):
-        return 40
-    
-    if isCarre(dices):
-        return 35
-    
-    if isFull(dices):
-        return 30
-    
-    if isBrelan(dices):
-        return 28
-        
+
+    for function, value in ORDERED_POSSIBLE_FIGURES.items():
+        if function(dices):
+            return value
+
     return sum(dices)
 
+
 def main(rolls: List[List[int]]) -> int:
-    
+
     resultat: int = 0
-    
+
     for roll in rolls:
         resultat += calculateOneRoll(roll)
-        
+
     return resultat

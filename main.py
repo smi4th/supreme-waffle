@@ -27,8 +27,7 @@ def isYAMS(dices: List[int]) -> bool:
     counter = Counter(dices)
     return max(counter.values()) == 5
 
-def main(dices: List[int]) -> int:
-    
+def calculateOneRoll(dices: List[int]) -> int:
     checkNumberOfDices(dices)
     
     if isYAMS(dices):
@@ -47,3 +46,7 @@ def main(dices: List[int]) -> int:
         return 28
         
     return sum(dices)
+
+def main(rolls: List[List[int]]) -> int:
+    
+    return 0

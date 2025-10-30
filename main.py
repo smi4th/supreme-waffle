@@ -9,9 +9,16 @@ def isBrelan(dices: List[int]) -> bool:
     counter = Counter(dices)
     return max(counter.values()) == 3
 
+def isCarre(dices: List[int]) -> bool:
+    counter = Counter(dices)
+    return max(counter.values()) == 4
+
 def main(dices: List[int]) -> int:
     
     checkNumberOfDices(dices)
+    
+    if isCarre(dices):
+        return 35
     
     if isBrelan(dices):
         return 28

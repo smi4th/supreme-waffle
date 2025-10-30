@@ -18,9 +18,17 @@ def isFull(dices: List[int]) -> bool:
     counts = sorted(counter.values())
     return counts == [2, 3]
 
+def isSuite(dices: List[int]) -> bool:
+    min_dice: int = min(dices)
+    max_dice: int = max(dices)
+    return len(set(dices)) == max_dice - min_dice + 1 == len(dices)
+
 def main(dices: List[int]) -> int:
     
     checkNumberOfDices(dices)
+    
+    if isSuite(dices):
+        return 40
     
     if isCarre(dices):
         return 35
